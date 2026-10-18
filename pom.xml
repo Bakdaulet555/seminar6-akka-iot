@@ -38,8 +38,7 @@
         <configuration>
           <recompileMode>all</recompileMode>
           <args>
-            <arg>-release:11</arg>
-          </args>
+            </args>
         </configuration>
         <executions>
           <execution>

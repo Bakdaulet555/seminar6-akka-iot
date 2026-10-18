@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Akka-IoT-Analysis" default="analyze" basedir=".">
+
+    <property name="spotbugs.version" value="4.8.6.6"/>
+    <property name="report.dir" value="target/reports"/>
+
+    <target name="analyze">
+        <mkdir dir="${report.dir}"/>
+
+        <exec executable="mvn" failonerror="true">
+            <arg value="compile"/>
+            <arg value="com.github.spotbugs:spotbugs-maven-plugin:${spotbugs.version}:spotbugs"/>
+            <arg value="-Dspotbugs.xmlOutput=true"/>
+            <arg value="-Dspotbugs.xmlOutputFilename=spotbugs.xml"/>
+        </exec>
+
+        <copy file="target/spotbugs.xml"
+              tofile="${report.dir}/findbugs.xml"/>
+    </target>
+
+</project>
